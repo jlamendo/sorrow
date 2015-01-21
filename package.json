@@ -1,0 +1,11 @@
+{
+  "name": "sorrow",
+  "version": "1.0.0",
+  "description": "Type-Based mutational fuzzing in js. Because even joi requires balance.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
