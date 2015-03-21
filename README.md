@@ -30,11 +30,32 @@ Sorrow is highly extendable, and I hope that you contribute to the project by do
 
 
 ## API 
-All types are currently exposed as getters, so  `sorrow[typeof var]` returns a payload of the same type as var.
 
-This can cause some problems with performance, so an additional async API is available under sorrow.async[type]. These functions aren't purely asynchronous, as sorrow is performing a huge amount of computations internally and therefore can easily block the event loop. Even so, it does offer a decent performance increase, and the ability to utilize mutations on your own input.
 
-The async API also has the ability to perform purely mutational fuzzing, rather than relying on a builtin set of attack vectors. To use the module in this way, call sorrow like this:
+#### Sync "shorthand" API:
+```
+payload = sorrow[type]
+```
+#### Async/Sync API:
+```
+payload = sorrow.async[type]([seedVal],function(payload){
+// If given a callback function, the return value will be the return value of the callback.
+// Both the callback and return pattern give the same results.
+})
+```
+
+Where 'type' is one of:
+* string
+* number
+* date
+* binary
+* object
+* boolean
+* array
+* any
+ 
+
+The async API functions aren't purely asynchronous, as sorrow is performing a huge amount of computations internally and therefore can easily block the event loop. Even so, it does offer a decent performance increase. The async API also has the ability to perform purely mutational fuzzing, rather than relying on a builtin set of attack vectors. To use the module in this way, call sorrow like this:
 
 ```
 	payload = sorrow.async.string('asdf');
