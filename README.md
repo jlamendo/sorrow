@@ -1,3 +1,4 @@
+
 # What is it?
 Sorrow is Joi's evil twin. 
 It exists to create malicious payloads based on Joi validator schemas that will pass said validators.
@@ -127,19 +128,6 @@ var payload = sorrow.array
 ```
 Similar to sorrow.object, but an array instead.
 
-
-### sorrow.om
-```
-var obj = {
-	"an":"object",
-	"with": ['any', 'sorrow'],
-	"types": {"you":"want"}
-}
-
-var payload = sorrow.om(object)
-```
-
-This is the object mutator. Pass in any object, and sorrow will return a new object that has matching property names/types. If there are properties with types that sorrow doesn't know how to generate ( e.g. functions ), they will be set to strings.
 
 
 
