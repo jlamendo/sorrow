@@ -3,7 +3,7 @@
 Sorrow is Joi's evil twin. 
 It exists to create malicious payloads based on Joi validator schemas that will pass said validators.
 
-## Installation:
+## Getting Started:
 
 ```
 npm i sorrow
@@ -28,6 +28,8 @@ Each type gets it's own seperate mutator instance, which over time allows it to 
 
 Sorrow is highly extendable, and I hope that you contribute to the project by doing just that. You can extend the generational fuzzer by adding additional payload strings to the configuration objects in vectors.js. If there is a missing target context, it's pretty easy to add an additional one: you define an array of strings and a name - very simple. 
 
+
+## API 
 All types are currently exposed as getters, so  `sorrow[typeof var]` returns a payload of the same type as var.
 
 This can cause some problems with performance, so an additional async API is available under sorrow.async[type]. These functions aren't purely asynchronous, as sorrow is performing a huge amount of computations internally and therefore can easily block the event loop. Even so, it does offer a decent performance increase, and the ability to utilize mutations on your own input.
@@ -47,8 +49,7 @@ The async API also has the ability to perform purely mutational fuzzing, rather 
 
 ```
 
-
-
+_____________
 ### sorrow.string
 
 ```
@@ -57,13 +58,14 @@ var payload = sorrow.string
 
 Returns a string with a malicious payload targeting various systems. Useful when testing for injection vulnerabilities.
 Included target contexts are:
-html
-javascript
-SQL
-Buffer overflows
-Format Strings
-Integer overflows
-OS command injection (bash, powershell, etc)
+* HTML
+* Javascript ( Server/Client Side )
+* SQL ( MySQL, Oracle, Postgres )
+* OS command injection (bash, powershell, etc)
+* Buffer Overflows
+* Format Strings
+* Integer overflows
+
 
 #### Extending sorrow.string
 If you have additional payloads, add them in /lib/vectors.js. The format is dead simple: 
@@ -78,19 +80,19 @@ If you have additional payloads, add them in /lib/vectors.js. The format is dead
 }
 ```
 Strings are not mutated by default.
-
+_____________
 ### sorrow.number:
 ```
 var payload = sorrow.number
 ```
-Returns a random number via a Linear Congruental Generator ( LCG ) algorithm. Numbers are run through the mutational fuzzer before being returned.
-
+Returns a random number via a Linear Congruental Generator ( LCG ) algorithm. Numbers are run through the  mutational fuzzer before being returned.
+_____________
 ### sorrow.boolean:
 ```
 var payload = sorrow.boolean
 ```
 Returns true, false, 1, or 0.
-
+_____________
 ### sorrow.date
 ```
 var payload = sorrow.date
@@ -105,7 +107,7 @@ while(random > timeRightNow * 1.2){
 return new Date(Math.random() * timeRightNow - random)
 ```
 Dates are run through the mutational fuzzer before being returned.
-
+_____________
 ### sorrow.binary 
 ```
 var payload = sorrow.binary
@@ -122,13 +124,13 @@ var payload = sorrow.object
 returns a completely randomized object - size is random, property names are pulled from a wordlist, and the values of the properties are random sorrow components. Can and does recurse, limit set to 3. Very memory/CPU intensive.
 
 
-
+_____________
 ### sorrow.array
 ```
 var payload = sorrow.array
 ```
 Similar to sorrow.object, but an array instead.
-
+_____________
 
 
 
