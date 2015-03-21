@@ -14,6 +14,7 @@ On the Server:
 var sorrow = require('./sorrow.js');
 ```
 In the browser:
+
 ```
 <script src='/sorrow.1.0.3.min.js'>
 ```
@@ -25,15 +26,15 @@ The generational fuzzer generates seed data based on data types, which is then r
 
 Each type gets it's own seperate mutator instance, which over time allows it to recognize patterns from each type and create more consistent and "smart" payloads. The more iterations that are run, the more accurate it becomes.
 
-Sorrow is highly extendable, and I hope that you contribute to the project by doing just that. You can extend the generational fuzzer by adding additional payload strings to their respective arrays located in `/lib/vectorator.js` I do ask, however, that you keep the payload strings within their respective target context arrays. If there is a missing target context, a stub to add an additional one can be found in the comments in vectorator.js. In short, you define an array of strings - very simple. 
+Sorrow is highly extendable, and I hope that you contribute to the project by doing just that. You can extend the generational fuzzer by adding additional payload strings to the configuration objects in vectors.js. If there is a missing target context, it's pretty easy to add an additional one: you define an array of strings and a name - very simple. 
 
-All types are currently exposed as getters, with the exception of objectMutator(om), so  `sorrow[typeof var]` returns a payload of the same type as var.
+All types are currently exposed as getters, so  `sorrow[typeof var]` returns a payload of the same type as var.
 
 This can cause some problems with performance, so an additional async API is available under sorrow.async[type]. These functions aren't purely asynchronous, as sorrow is performing a huge amount of computations internally and therefore can easily block the event loop. Even so, it does offer a decent performance increase, and the ability to utilize mutations on your own input.
 
-
 The async API also has the ability to perform purely mutational fuzzing, rather than relying on a builtin set of attack vectors. To use the module in this way, call sorrow like this:
-	```
+
+```
 	payload = sorrow.async.string('asdf');
 	//or...
 	sorrow.async.string('asdf',function(payload){
@@ -44,7 +45,7 @@ The async API also has the ability to perform purely mutational fuzzing, rather 
 		socket.emit(payload) // or whatever you want to do with it.
 	})
 
-	```
+```
 
 
 
