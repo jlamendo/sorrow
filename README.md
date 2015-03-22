@@ -153,5 +153,7 @@ var payload = sorrow.array
 Similar to sorrow.object, but an array instead.
 _____________
 
+## Changelog:
 
+3/21/15: v1.0.4 - Updated package.json with github issues url.
 

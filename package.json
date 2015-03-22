@@ -1,15 +1,18 @@
 {
   "name": "sorrow",
-  "version": "1.0.3",
-  "description": "Type-Based mutational fuzzing in js. Because even joi requires balance.",
+  "version": "1.0.4",
+  "description": "Type-Based mutational fuzzing in js. Because even Joi requires balance.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "issues": "https://github.com/liftsecurity/sorrow/issues",
+  "bugs": "https://github.com/liftsecurity/sorrow/issues",
+  "author": "Jon Lamendola",
+  "keywords": ["fuzz","fuzzer","joi","surku","mutation","testing"],
   "license": "MIT",
   "dependencies": {
     "cranium": "^1.3.3",
-    "mathjs": "^1.4.0",
+    "mathjs": "^1.4.0"
   }
 }
