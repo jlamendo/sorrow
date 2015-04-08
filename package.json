@@ -1,6 +1,6 @@
 {
   "name": "sorrow",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Type-Based mutational fuzzing in js. Because even Joi requires balance.",
   "main": "index.js",
   "scripts": {
