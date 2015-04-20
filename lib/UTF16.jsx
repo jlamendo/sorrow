@@ -93,7 +93,11 @@ function UTF16(transformFunc){
 
 
   var pop = function(opts) {
-      if(!opts.max && !opts.min) opts.max=1000;
+      if(!opts.max && !opts.min) {
+        opts.max=1000
+      } else {
+        opts.max=Math.max(opts.max||1000, opts.min ||0)
+      };
       opts.max = Math.floor(opts.max/(1.6016216216216217-(opts.max*0.000082)))
       this.compiledText = "";
       var compile = function(el){

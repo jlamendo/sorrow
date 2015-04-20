@@ -1,8 +1,10 @@
 {
   "name": "sorrow",
-  "version": "1.0.8",
+  "version": "2.0.9",
   "description": "Type-Based mutational fuzzing in js. Because even Joi requires balance.",
   "main": "index.js",
+  "engine": "0.12.0",
+  "repository": "https://github.com/liftsecurity/sorrow",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,8 +21,11 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "cranium": "^1.3.3",
+    "babel": "^5.1.8",
+    "highland": "^2.4.0",
     "mathjs": "^1.4.0",
-    "randy": "^1.5.1"
+    "randy": "^1.5.1",
+    "simple-lru-cache": "0.0.2",
+    "type-detect": "^1.0.0"
   }
 }
